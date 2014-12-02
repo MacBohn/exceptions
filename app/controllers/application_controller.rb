@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  class AccessDenied < StandardError
-  end
+    class AccessDenied < StandardError
+    end
+      rescue_from AccessDenied, with: :render_404
 
-  rescue_from AccessDenied, with: :render_404
 
   def render_404
     render "public/404", status: :not_found, layout: false

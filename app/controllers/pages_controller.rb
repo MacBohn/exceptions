@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-before_action :authorize, only: :show
+before_action :authorize
 
   def index
     authorize
@@ -13,4 +13,11 @@ before_action :authorize, only: :show
     end
   end
 
+def signin
+  session[:user_id] != 1
+  redirect_to root_path
+end
+  def index
+    raise AccessDenied
+  end
 end
